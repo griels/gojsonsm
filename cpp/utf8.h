@@ -19,9 +19,17 @@ bool Valid(moku::slice<uint8_t> p);
 bool ValidRune(int32_t r);
 bool ValidString(std::string s);
 
-struct acceptRange{ uint8_t lo{0};
-uint8_t hi{0};};
-template <> inline bool moku::is_nil<acceptRange>(const acceptRange& acceptrange) {return moku::is_nil<uint8_t>(acceptrange.lo)&&moku::is_nil<uint8_t>(acceptrange.hi); }static std::vector<acceptRange> acceptRanges;
+struct acceptRange {
+    uint8_t lo{0};
+    uint8_t hi{0};
+};
+template <>
+inline bool moku::is_nil<acceptRange>(const acceptRange &acceptrange)
+{
+    return moku::is_nil<uint8_t>(acceptrange.lo) &&
+           moku::is_nil<uint8_t>(acceptrange.hi);
+}
+static std::vector<acceptRange> acceptRanges;
 static constexpr int as{240};
 static std::vector<uint8_t> first;
 static constexpr int hicb{191};
@@ -50,4 +58,3 @@ static constexpr int t5{248};
 static constexpr int tx{128};
 static constexpr int xx{241};
 } // namespace utf8
-
